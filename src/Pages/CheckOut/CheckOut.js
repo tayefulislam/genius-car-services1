@@ -8,8 +8,6 @@ const CheckOut = () => {
 
             <h1>service check out</h1>
 
-
-
         </div>
     );
 };
