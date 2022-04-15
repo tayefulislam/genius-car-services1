@@ -8,21 +8,21 @@ const Register = () => {
     const nagivate = useNavigate()
 
 
-    const naviagateLogin =()=>{
+    const naviagateLogin = () => {
         nagivate('/login')
     }
 
 
-    const handleRegister = event =>{
+    const handleRegister = event => {
         event.preventDefault()
 
-        // console.log(event.target.email.value)
+        // console.log(event.target.email.value) d
 
         const name = event.target.name.value;
         const email = event.target.email.value;
         const password = event.target.password.value;
 
-        
+
 
     }
 
@@ -34,16 +34,16 @@ const Register = () => {
             <h1 className='text-primary text-center'>Register</h1>
             <Form onSubmit={handleRegister}>
 
-            <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Your Name</Form.Label>
-                    <Form.Control  type="text" name='name' placeholder="Your Name" />
-                   
+                    <Form.Control type="text" name='name' placeholder="Your Name" />
+
                 </Form.Group>
 
 
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
-                    <Form.Control  type="email" name='email' placeholder="Enter email" />
+                    <Form.Control type="email" name='email' placeholder="Enter email" />
                     <Form.Text className="text-muted">
                         We'll never share your email with anyone else.
                     </Form.Text>
