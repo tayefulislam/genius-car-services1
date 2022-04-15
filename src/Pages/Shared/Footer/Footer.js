@@ -1,4 +1,5 @@
 import React from 'react';
+import './Footer.css'
 
 const Footer = () => {
 
@@ -8,7 +9,7 @@ const Footer = () => {
     return (
         <div>
 
-            <p>The Car Doctor @ {year} {time}</p>
+            <p className='text-center mt-5 '>The Car Doctor @ <span className='text-danger'>{year} {time}</span></p>
 
         </div>
     );
