@@ -3,6 +3,7 @@ import { Button, Form } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
+import SocialLogin from '../SocialLogin/SocialLogin';
 
 
 const Register = () => {
@@ -49,6 +50,7 @@ const Register = () => {
         <div className='container w-50 mx-auto'>
 
             <h1 className='text-primary text-center'>Register</h1>
+            <SocialLogin></SocialLogin>
             <Form onSubmit={handleRegister}>
 
                 <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -70,11 +72,15 @@ const Register = () => {
                     <Form.Label>Password</Form.Label>
                     <Form.Control type="password" name='password' placeholder="Password" />
                 </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                    <Form.Check type="checkbox" label="Check me out" />
-                </Form.Group>
+
+
+                <input type="checkbox" name="terms" id="terms" />
+
+                <label htmlFor="terms">terms and condition</label>
+
+                <br />
                 <Button variant="primary" type="submit">
-                    Submit
+                    Sign Up
                 </Button>
             </Form>
 
