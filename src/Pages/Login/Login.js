@@ -5,6 +5,13 @@ import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-
 import auth from '../../firebase.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import SocialLogin from './SocialLogin/SocialLogin';
+import Loading from '../Shared/Loading/Loading';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
+
+
 const Login = () => {
 
 
@@ -40,6 +47,8 @@ const Login = () => {
 
         signInWithEmailAndPassword(email, password)
 
+
+
     }
 
 
@@ -51,7 +60,7 @@ const Login = () => {
     const resetPassword = async () => {
 
         await sendPasswordResetEmail(emailRef)
-        alert('email set')
+        toast('email set')
 
     }
 
@@ -59,11 +68,19 @@ const Login = () => {
 
     if (error) {
         errorMessage = <div className='text-danger'>{error?.message}</div>
+
+
     }
+
+
+
+
 
     if (user) {
         nagivate(from, { replace: true });
     }
+
+    console.log(user)
 
 
 
@@ -98,11 +115,14 @@ const Login = () => {
                 </Button>
             </Form>
 
-            <button onClick={resetPassword}> reset password</button>
+            <button className='btn' onClick={resetPassword}> reset password</button>
 
             {errorMessage}
 
             <p>New To Genius Car <span className='text-danger pc-auto' onClick={navigateRegister}>Register</span></p>
+
+            <ToastContainer />
+
 
         </div>
     );

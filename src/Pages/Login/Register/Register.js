@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import SocialLogin from '../SocialLogin/SocialLogin';
+import { async } from '@firebase/util';
+
+
 
 
 const Register = () => {
+
+
+    const [agree, setAgree] = useState(false)
 
 
     const [
@@ -14,37 +20,51 @@ const Register = () => {
         user,
         loading,
         error,
-    ] = useCreateUserWithEmailAndPassword(auth);
+    ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+
+    const [updateProfile, updating, errorUpdate] = useUpdateProfile(auth);
 
 
     const nagivate = useNavigate();
+
+
     const naviagateLogin = () => {
         nagivate('/login')
     }
 
-    const handleRegister = event => {
+    console.log(user)
+
+    const handleRegister = async event => {
         event.preventDefault()
 
         // console.log(event.target.email.value) d
-        // const name = event.target.name.value;
+        const name = event.target.name.value;
         const email = event.target.email.value;
         const password = event.target.password.value;
 
-        createUserWithEmailAndPassword(email, password)
-
-        console.log(email)
-        console.log(password)
 
 
+        await createUserWithEmailAndPassword(email, password);
 
-    }
+        await updateProfile({ displayName: name })
 
-    if (user) {
+
+
         nagivate('/home')
+
+
+        // console.log(email)
+        // console.log(password)
+
     }
 
+    // if (user) {
+    //     nagivate('/home')
+    // }
 
-
+    const handleagree = () => {
+        setAgree(!agree)
+    }
 
     return (
         <div className='container w-50 mx-auto'>
@@ -74,12 +94,16 @@ const Register = () => {
                 </Form.Group>
 
 
-                <input type="checkbox" name="terms" id="terms" />
+                <input onClick={handleagree} type="checkbox" name="terms" id="terms" />
 
-                <label htmlFor="terms">terms and condition</label>
+                <label className={`ps-2 ${agree ? '' : 'text-danger'}`} htmlFor="terms">terms and condition</label>
 
                 <br />
-                <Button variant="primary" type="submit">
+                <Button
+                    disabled={!agree}
+                    variant="primary"
+                    type="submit"
+                >
                     Sign Up
                 </Button>
             </Form>
