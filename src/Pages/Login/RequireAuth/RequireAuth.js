@@ -9,6 +9,8 @@ const RequireAuth = ({ children }) => {
 
     const [user, loading, error] = useAuthState(auth);
 
+    console.log(user)
+
     const location = useLocation();
 
     if (loading) {
@@ -17,6 +19,16 @@ const RequireAuth = ({ children }) => {
 
     if (!user) {
         return <Navigate to="/login" state={{ from: location }} replace />;
+    }
+
+    if (!user.emailVerified) {
+
+        return <div>
+            <h1>email not varifided</h1>
+        </div>
+
+
+
     }
 
 

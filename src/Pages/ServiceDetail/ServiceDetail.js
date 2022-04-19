@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
+import PageTitle from '../Shared/PageTitle/PageTitle';
 
 const ServiceDetail = () => {
     const { serviceId } = useParams()
@@ -22,6 +23,8 @@ const ServiceDetail = () => {
     return (
         <div>
 
+            <PageTitle title={serviceId}></PageTitle>
+
             <h1>Welcome to service detail {serviceId.slice(0, 10)}</h1>
 
 
@@ -29,7 +32,7 @@ const ServiceDetail = () => {
             <Link to='/checkout'><button >check</button></Link>
 
 
-        </div>
+        </div >
     );
 };
 

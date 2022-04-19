@@ -5,6 +5,7 @@ import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-fireb
 import auth from '../../../firebase.init';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import { async } from '@firebase/util';
+import PageTitle from '../../Shared/PageTitle/PageTitle';
 
 
 
@@ -68,6 +69,7 @@ const Register = () => {
 
     return (
         <div className='container w-50 mx-auto'>
+            <PageTitle title='Register'></PageTitle>
 
             <h1 className='text-primary text-center'>Register</h1>
             <SocialLogin></SocialLogin>
