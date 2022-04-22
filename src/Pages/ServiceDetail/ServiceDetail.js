@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
@@ -8,7 +8,21 @@ const ServiceDetail = () => {
     const { serviceId } = useParams()
 
     const navigate = useNavigate()
-    const [user, loading, error] = useAuthState(auth);
+
+    // const [user, loading, error] = useAuthState(auth);
+
+    const [service, setService] = useState([])
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/service/${serviceId}`)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                setService(data)
+            })
+    }, [])
+
+    const { _id, name } = service
 
     const handleCheckOut = () => {
 
@@ -23,9 +37,9 @@ const ServiceDetail = () => {
     return (
         <div>
 
-            <PageTitle title={serviceId}></PageTitle>
+            <PageTitle title={`${service?.name}`}></PageTitle>
 
-            <h1>Welcome to service detail {serviceId.slice(0, 10)}</h1>
+            <h1>Welcome to service detail {service?.name}</h1>
 
 
 
