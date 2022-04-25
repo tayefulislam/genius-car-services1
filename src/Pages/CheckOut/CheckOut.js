@@ -31,6 +31,26 @@ const CheckOut = () => {
     console.log(service)
 
 
+    const handlePlaceOrder = (event) => {
+
+        event.preventDefault()
+
+        const order = {
+            userName: user.displayName,
+            email: user.email,
+            serviceId: serviceId,
+            serviceName: service.name,
+
+            address: event.target.address.value,
+            phone: event.target.phone.value
+
+        }
+
+        console.log(order)
+
+    }
+
+
     return (
         <div className='w-50 mx-auto'>
 
@@ -38,12 +58,12 @@ const CheckOut = () => {
 
             <h1>service check out </h1>
 
-            <form>
-                <input className='w-100 mb-2' value={user.displayName} type="text" name='name' placeholder='Your Name' /><br />
-                <input className='w-100 mb-2' value={user.email} type="email" name='Email' placeholder='Email' /><br />
-                <input className='w-100 mb-2' value={service.name} type="text" name='service' placeholder='Service' /> <br />
+            <form onSubmit={handlePlaceOrder}>
+                <input className='w-100 mb-2' value={user.displayName} type="text" name='name' placeholder='Your Name' required readonly /><br />
+                <input className='w-100 mb-2' value={user.email} type="email" name='Email' placeholder='Email' required readonly /><br />
+                <input className='w-100 mb-2' value={service.name} type="text" name='service' placeholder='Service' required readOnly /> <br />
                 <input className='w-100 mb-2' type="text" name='address' placeholder='Address' /><br />
-                <input className='w-100 mb-2' type="text" name='text' placeholder='Phone Number' /><br />
+                <input className='w-100 mb-2' type="text" name='phone' placeholder='Phone Number' /><br />
                 <input className='btn btn-primary' type="submit" value="Place Order" />
             </form>
 

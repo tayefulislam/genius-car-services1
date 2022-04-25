@@ -32,6 +32,7 @@ async function run() {
         await client.connect();
 
         const serviceCollections = client.db("geniusCar").collection('service');
+        const orderCollections = client.db("geniusCar").collection('order');
 
 
 
@@ -82,6 +83,14 @@ async function run() {
             res.send(result)
 
 
+        })
+
+        // order
+
+        app.post('/order', async (req, res) => {
+            const order = req.body;
+            const result = await orderCollections.insertOne(order)
+            res.send(result);
         })
 
 
