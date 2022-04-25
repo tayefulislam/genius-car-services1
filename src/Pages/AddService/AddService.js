@@ -23,6 +23,11 @@ const AddService = () => {
             .then(data => {
                 console.log(data)
 
+
+
+
+
+
             })
 
 

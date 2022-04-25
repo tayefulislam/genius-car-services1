@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import PageTitle from '../Shared/PageTitle/PageTitle';
+import useServiceDetail from '../hooks/useSeviceDetail';
 
 const ServiceDetail = () => {
     const { serviceId } = useParams()
@@ -10,6 +11,8 @@ const ServiceDetail = () => {
     const navigate = useNavigate()
 
     // const [user, loading, error] = useAuthState(auth);
+
+    // const [service] = useServiceDetail(serviceId)
 
     const [service, setService] = useState([])
 
@@ -21,6 +24,8 @@ const ServiceDetail = () => {
                 setService(data)
             })
     }, [])
+
+
 
     const { _id, name } = service
 
@@ -43,7 +48,7 @@ const ServiceDetail = () => {
 
 
 
-            <Link to='/checkout'><button >check</button></Link>
+            <Link to={`/checkout/${serviceId}`} ><button >check</button></Link>
 
 
         </div >
