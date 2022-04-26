@@ -37,12 +37,14 @@ function verifyJWT(req, res, next) {
 
         req.decoded = decoded// bar
 
+        next()
+
 
     });
 
 
     // console.log(token)
-    next()
+
 }
 
 
