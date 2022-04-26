@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 const ManageServices = () => {
 
@@ -58,7 +58,7 @@ const ManageServices = () => {
 
 
 
-            <ToastContainer></ToastContainer>
+
 
         </div>
     );

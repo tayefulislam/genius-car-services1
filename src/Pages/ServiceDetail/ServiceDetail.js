@@ -12,18 +12,18 @@ const ServiceDetail = () => {
 
     // const [user, loading, error] = useAuthState(auth);
 
-    // const [service] = useServiceDetail(serviceId)
+    const [service] = useServiceDetail(serviceId)
 
-    const [service, setService] = useState([])
+    // const [service, setService] = useState([])
 
-    useEffect(() => {
-        fetch(`http://localhost:5000/service/${serviceId}`)
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
-                setService(data)
-            })
-    }, [])
+    // useEffect(() => {
+    //     fetch(`http://localhost:5000/service/${serviceId}`)
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             console.log(data)
+    //             setService(data)
+    //         })
+    // }, [])
 
 
 

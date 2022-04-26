@@ -6,9 +6,10 @@ import auth from '../../firebase.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import SocialLogin from './SocialLogin/SocialLogin';
 import Loading from '../Shared/Loading/Loading';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
+
 import PageTitle from '../Shared/PageTitle/PageTitle';
+import axios from 'axios';
 
 
 
@@ -39,7 +40,7 @@ const Login = () => {
 
 
 
-    const handleSubmit = event => {
+    const handleSubmit = async event => {
         event.preventDefault()
 
         const email = emailRef.current.value;
@@ -47,7 +48,13 @@ const Login = () => {
 
         console.log(email, password)
 
-        signInWithEmailAndPassword(email, password)
+        await signInWithEmailAndPassword(email, password)
+
+        const { data } = await axios.post('http://localhost:5000/login', { email });
+        console.log(data)
+        localStorage.setItem('accessToken', data.accessToken)
+
+
 
 
 
@@ -76,7 +83,7 @@ const Login = () => {
 
 
     if (user) {
-        nagivate(from, { replace: true });
+        // nagivate(from, { replace: true });
     }
 
     console.log(user)
@@ -122,7 +129,7 @@ const Login = () => {
 
             <p>New To Genius Car <span className='text-danger pc-auto' onClick={navigateRegister}>Register</span></p>
 
-            <ToastContainer />
+
 
 
         </div>

@@ -13,6 +13,10 @@ import RequireAuth from './Pages/Login/RequireAuth/RequireAuth';
 import CheckOut from './Pages/CheckOut/CheckOut';
 import AddService from './Pages/AddService/AddService';
 import ManageServices from './Pages/ManageServices/ManageServices';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Orders from './Pages/Orders/Orders';
+
 
 function App() {
   return (
@@ -22,7 +26,7 @@ function App() {
         <Route path='/' element={<Home></Home>}> </Route>
         <Route path='/home' element={<Home></Home>}> </Route>
         <Route path='/service/:serviceId' element={<ServiceDetail></ServiceDetail>}></Route>
-        {/* <Route path='/home/service/:serviceId' element={<ServiceDetail></ServiceDetail>}></Route> */}
+        <Route path='/home/service/:serviceId' element={<ServiceDetail></ServiceDetail>}></Route>
         <Route path='/about' element={<About></About>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/register' element={<Register></Register>}></Route>
@@ -33,6 +37,11 @@ function App() {
         <Route path='/addservice' element={<RequireAuth>
           <AddService></AddService></RequireAuth>}></Route>
 
+
+
+        <Route path='/orders' element={<RequireAuth><Orders></Orders></RequireAuth>}></Route>
+
+
         <Route path='/manage' element={<RequireAuth>
           <ManageServices></ManageServices></RequireAuth>}></Route>
 
@@ -42,6 +51,8 @@ function App() {
 
       </Routes>
       <Footer></Footer>
+
+      <ToastContainer></ToastContainer>
 
     </div>
   );
