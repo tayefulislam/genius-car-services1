@@ -17,7 +17,7 @@ const Orders = () => {
 
             const email = user.email
 
-            const url = `http://localhost:5000/orders?email=${email}`;
+            const url = `https://mighty-dawn-33450.herokuapp.com/orders?email=${email}`;
 
             try {
                 const { data } = await axios.get(url, {

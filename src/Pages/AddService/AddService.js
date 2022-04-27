@@ -10,7 +10,7 @@ const AddService = () => {
 
         console.log(data)
 
-        const url = `http://localhost:5000/service`;
+        const url = `https://mighty-dawn-33450.herokuapp.com/service`;
         fetch(url, {
             method: "POST",
             headers: {

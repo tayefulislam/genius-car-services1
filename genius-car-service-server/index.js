@@ -8,7 +8,7 @@ const jwt = require('jsonwebtoken')
 
 
 const app = express();
-const port = process.env.port || 5000;
+const port = process.env.PORT || 5000;
 
 
 //middleware
@@ -179,6 +179,10 @@ run().catch(console.dir)
 
 app.get('/', (req, res) => {
     res.send('server is runnding')
+})
+
+app.get('/hero', (req, res) => {
+    res.send('hero yooooooooooooooooooooo')
 })
 
 

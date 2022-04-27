@@ -8,7 +8,7 @@ const useServiceDetail = (serviceId) => {
     const [service, setService] = useState({})
 
     useEffect(() => {
-        fetch(`http://localhost:5000/service/${serviceId}`)
+        fetch(`https://mighty-dawn-33450.herokuapp.com/service/${serviceId}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data)

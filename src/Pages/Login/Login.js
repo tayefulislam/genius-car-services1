@@ -38,7 +38,7 @@ const Login = () => {
         auth
     );
 
-
+    let from = location.state?.from?.pathname || "/";
 
     const handleSubmit = async event => {
         event.preventDefault()
@@ -50,10 +50,11 @@ const Login = () => {
 
         await signInWithEmailAndPassword(email, password)
 
-        const { data } = await axios.post('http://localhost:5000/login', { email });
+        const { data } = await axios.post('https://mighty-dawn-33450.herokuapp.com/login', { email });
         console.log(data)
 
         localStorage.setItem('accessToken', data.accessToken)
+        nagivate(from, { replace: true });
 
 
 
@@ -74,7 +75,7 @@ const Login = () => {
 
     }
 
-    let from = location.state?.from?.pathname || "/";
+
 
     if (error) {
         errorMessage = <div className='text-danger'>{error?.message}</div>

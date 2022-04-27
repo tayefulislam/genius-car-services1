@@ -6,7 +6,7 @@ const ManageServices = () => {
     const [services, setServices] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/services')
+        fetch('https://mighty-dawn-33450.herokuapp.com/services')
             .then(res => res.json())
             .then(data => setServices(data))
     }, [])
@@ -19,7 +19,7 @@ const ManageServices = () => {
         if (prossed) {
 
             console.log(id)
-            fetch(`http://localhost:5000/delete/${id}`, {
+            fetch(`https://mighty-dawn-33450.herokuapp.com/delete/${id}`, {
                 method: "DELETE"
             })
                 .then(res => res.json())
